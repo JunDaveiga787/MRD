@@ -1,3 +1,4 @@
+/* --- VARIABLES --- */
 :root {
     --pantone-black: #1A1A1A;
     --pantone-orange: #FF6A13;
@@ -5,6 +6,7 @@
     --gray: #A0A0A0;
 }
 
+/* --- RESET & BASE --- */
 body {
     margin: 0;
     background-color: var(--pantone-black);
@@ -13,88 +15,103 @@ body {
     overflow-x: hidden;
 }
 
-.container { width: 90%; max-width: 1100px; margin: 0 auto; }
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
 
 /* --- HEADER --- */
-.main-header { text-align: center; border-bottom: 1px solid rgba(255,255,255,0.05); }
-.top-bar { padding: 10px; font-size: 10px; font-weight: 700; letter-spacing: 2px; }
-.brand { padding: 40px 0; }
-.brand-logo { max-height: 40px; margin-bottom: 10px; }
-.location { display: block; color: var(--pantone-orange); font-size: 11px; letter-spacing: 5px; }
+.main-header {
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.top-bar {
+    background-color: var(--pantone-black);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.ticker-wrapper {
+    display: inline-block;
+    padding-left: 100%;
+    animation: ticker 25s linear infinite;
+}
+
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+.mid-bar {
+    position: relative;
+    padding: 15px 0 5px 0;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.brand {
+    padding: 0;
+}
+
+.brand-logo {
+    max-height: 70px;
+    margin-bottom: 5px;
+    display: block;
+    margin: 0 auto 5px auto;
+}
+
+.location {
+    display: block;
+    color: var(--pantone-orange);
+    font-size: 10px;
+    letter-spacing: 5px;
+    margin-top: -5px;
+}
+
+/* --- NAV --- */
+.main-nav {
+    padding: 15px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--pantone-black);
+    transition: all 0.4s ease;
+    width: 100%;
+}
 
 .main-nav ul {
-    display: flex; justify-content: center; gap: 30px;
-    list-style: none; padding: 20px 0; margin: 0;
-}
-.main-nav a { color: white; text-decoration: none; font-weight: 700; font-size: 11px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.main-nav a:hover{
+.main-nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
     color: var(--pantone-orange);
-    transition: 0.5s;
 }
 
-.btn-donate {
-    background: var(--pantone-orange); color: black !important;
-    padding: 10px 10px; border-radius: 8px;
-}
-
-/* --- HERO --- */
-.hero-section {
-    padding: 190px 0; text-align: center; position: relative;
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('img/tranquilo.jpeg');
-    background-size: cover;
-}
-
-/* --- GRID DE CARDS (LO QUE SE HABÍA ROTO) --- */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    padding: 80px 0;
-}
-
-.card {
-    background: rgba(255,255,255,0.02);
-    padding: 40px;
-    border-top: 3px solid var(--pantone-orange);
-}
-.card p{
-    font-size: 20px;
-}
-
-.card-number { color: var(--pantone-orange); font-weight: 700; display: block; margin-bottom: 15px; }
-
-/* --- SECCION SPLIT --- */
-.split-layout {
-    display: flex; gap: 50px; align-items: center; padding: 80px 0;
-}
-.text-side, .visual-side { flex: 1; }
-
-.info-card-dark {
-    background: #222; padding: 40px; border: 1px solid rgba(255,255,255,0.1); text-align: center;
-}
-
-/* --- FOOTER & FLOAT --- */
-.footer-simple { padding: 40px 0; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; }
-.footer-flex { display: flex; justify-content: space-between; }
-
-.btn-join-floating {
-    position: fixed; bottom: 30px; right: 30px;
-    background: var(--pantone-orange); color: black;
-    padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700;
-}
-
-.menu-toggle { display: none; color: white; background: none; border: none; font-size: 24px; }
-
-@media (max-width: 768px) {
-    .split-layout { flex-direction: column; text-align: center; }
-    .main-nav ul { flex-direction: column; gap: 15px; }
-    .footer-flex { flex-direction: column; text-align: center; gap: 10px; }
-}
-/* --- ESTILOS PARA EL BOTÓN (AÑADIR AL FINAL) --- */
+/* Botón de menú (Hamburguesa) - Estado Desktop (oculto) */
 .menu-toggle {
-    display: none; /* Oculto por defecto en desktop */
+    display: none;
     background: none;
     border: none;
     color: var(--white);
@@ -104,220 +121,47 @@ body {
     right: 20px;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 1100;
 }
 
-.mid-bar {
-    position: relative; /* Para posicionar el botón correctamente */
-    padding: 40px 0;
-    transition: all 0.3s ease;
-}
-
-/* --- MEDIA QUERY PARA MÓVILES (768px o menos) --- */
-@media (max-width: 768px) { 
-    /* 1. Achicamos el header */
-    .mid-bar {
-        padding: 15px 0;
-    }
-}
-    .brand-logo {
-        max-height: 50px; /* Logo más pequeño en móvil */
-    }
-
-    .location {
-        font-size: 9px;
-        letter-spacing: 3px;
-    }
-
-    /* 2. Mostramos el botón de hamburguesa */
-    .menu-toggle {
-        display: block;
-    }
-
-    /* 3. Ocultamos el menú y lo preparamos para el despliegue */
-/* --- NAV CENTRALIZADA --- */
-.main-nav { 
-    padding: 20px 0; 
-    border-top: 1px solid rgba(255, 255, 255, 0.05); 
-    width: 100%;
-}
-
-.main-nav ul {
-    list-style: none; 
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-    align-items: center; /* Alinea verticalmente el texto con el botón */
-    gap: 40px; /* Aumentamos el espacio para que respire mejor */
-    margin: 0; 
-    padding: 0;
-}
-
-.main-nav a {
-    color: var(--white); 
-    text-decoration: none;
-    font-size: 10px; /* Un poco más grande para mejor legibilidad */
-    font-weight: 700; 
-    letter-spacing: 2px;
-    display: inline-block;
-    transition: color 0.3s ease;
-}
-
-.main-nav a:hover {
-    color: var(--pantone-orange);
-    transition: 0.5s;
-}
-
-.btn-donate {
-    background-color: var(--pantone-orange);
-    color: var(--pantone-black) !important;
-    padding: 12px 30px; /* Ajuste de tamaño para que se vea robusto */
-    border-radius: 8px;
-    line-height: 1; /* Evita que el botón crezca de más verticalmente */
-}
-
-/* --- AJUSTE MÓVIL --- */
-@media (max-width: 768px) {
-    .main-nav ul {
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    .btn-donate {
-        width: 80%; /* Botón ancho en móviles */
-        text-align: center;
-    }
-}
-/* --- HEADER COMPACTO --- */
-.top-bar {
-    padding: 8px 0; /* Un poco más delgado */
-    font-size: 10px;
-}
-
-.mid-bar {
-    padding: 15px 0 5px 0; /* Reducido drásticamente: arriba 15px, abajo 5px */
+/* --- HERO SECTION --- */
+.hero-section {
+    padding: 190px 0;
     text-align: center;
-    transition: all 0.3s ease;
-}
-
-.brand-logo {
-    max-height: 70px; /* Un poco más pequeño para ahorrar espacio */
-    margin-bottom: 5px;
-}
-
-.brand .location {
-    font-size: 10px;
-    letter-spacing: 5px;
-    margin-top: -5px; /* Sube un poco el texto naranja hacia el logo */
-    display: block;
-}
-
-/* --- NAV PEGADA AL HEADER --- */
-.main-nav {
-    padding: 10px 0; /* Relleno mínimo para que esté cerca del logo */
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    margin-top: 0; /* Asegura que no haya margen externo */
-}
-
-.main-nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 25px; /* Espacio entre links un poco más cerrado */
-    margin: 0;
-    padding: 0;
-}
-
-/* --- AJUSTE PARA MÓVIL --- */
-@media (max-width: 768px) {
-    .mid-bar {
-        padding: 10px 0; /* Aún más pequeño en celular */
-    }
-    
-    .brand-logo {
-        max-height: 50px;
-    }
-
-    .main-nav {
-        padding: 0; /* Elimina espacio extra en el desplegable */
-    }
-}
-
-/* Estilo del contenedor de la barra superior */
-.top-bar {
-    background-color: var(--pantone-black);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 8px 0;
-    overflow: hidden; /* Importante: oculta el texto que sale de la pantalla */
-    white-space: nowrap;
     position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/tranquilo.jpeg');
+    background-size: cover;
 }
 
-.ticker-wrapper {
-    display: inline-block;
-    padding-left: 100%; /* Empieza desde fuera de la derecha */
-    animation: ticker 25s linear infinite; /* Ajusta los '20s' para más o menos velocidad */
+.section-title {
+    /* Asumiendo que necesitas un estilo base para títulos si no estaba definido explícitamente */
+    font-size: 2.5rem;
+    margin-bottom: 20px;
 }
 
-.ticker-text {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--white);
-    text-transform: uppercase;
+.hero-text {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-/* Definición de la animación */
-@keyframes ticker {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+/* --- SEPARADORES --- */
+hr.elegant-separator {
+    border: 0;
+    height: 1px;
+    margin: 50px auto;
+    width: 60%;
+    background-image: linear-gradient(to right, rgba(255, 106, 19, 0), rgba(255, 106, 19, 0.75), rgba(255, 106, 19, 0));
+    opacity: 0.6;
 }
 
-/* Ajuste para mantener el menú cerca del header */
-.mid-bar {
-    padding: 15px 0 5px 0;
+/* --- MENSAJE OFICIAL --- */
+.message-section {
+    padding: 80px 0;
 }
 
-.main-nav {
-    padding: 15px 0;
-    margin-top: 0px;
-}
-
-/* --- AJUSTES PARA MÓVIL (Pantallas de 768px o menos) --- */
-@media (max-width: 768px) {
-    /* Reduce el tamaño del texto del mensaje */
-    .message-body p {
-        font-size: 0.95rem; /* Antes era 1.1rem */
-        line-height: 1.6;
-        margin-bottom: 15px;
-    }
-
-    /* Reduce el tamaño de la firma */
-    .signature-name {
-        font-size: 1.8rem; /* Antes era 2.8rem */
-    }
-
-    /* Reduce el espacio superior de la firma */
-    .signature-block {
-        margin-top: 30px;
-    }
-
-    /* Ajusta el tamaño del gráfico de la firma */
-    .signature-svg {
-        width: 180px;
-    }
-
-    /* Reduce el relleno general de la sección para ganar espacio */
-    .message-section {
-        padding: 50px 0;
-    }
-}
-
-/* --- ESTILO DE MENSAJE TIPO CARTA --- */
 .message-centered {
-    text-align: center; /* Centra todo el contenido como en la captura */
+    text-align: center;
 }
 
 .message-body p {
@@ -333,14 +177,28 @@ body {
 }
 
 .signature-block {
-    margin-top: 80px; /* Mayor espacio para separar el texto de la firma */
+    margin-top: 80px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signature-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--pantone-orange);
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .signature-name {
     font-family: 'Playfair Display', serif;
-    font-size: 3.2rem; /* Tamaño prominente como en la imagen */
+    font-size: 3.2rem;
     font-weight: 700;
-    margin-bottom: 5px;
+    margin: 0 0 5px 0;
     letter-spacing: -1px;
 }
 
@@ -359,367 +217,198 @@ body {
     opacity: 0.8;
 }
 
-/* Ajuste para que en teléfono no se vea gigante */
-@media (max-width: 768px) {
-    .signature-name {
-        font-size: 2.2rem;
-    }
-    
-    .message-body p {
-        font-size: 0.5rem;
-        padding: 0 8px;
-    }
-}
-
-/* --- ESTILOS DE LA FIRMA CON FOTO --- */
-.signature-block {
-    margin-top: 60px;
-    text-align: center;
-    display: flex; /* Usamos flexbox para centrar todo verticalmente */
-    flex-direction: column;
-    align-items: center;
-}
-
-.signature-photo {
-    width: 120px; /* Tamaño de la foto */
-    height: 120px;
-    border-radius: 50%; /* Hace la imagen circular */
-    object-fit: cover; /* Asegura que la imagen no se deforme */
-    border: 3px solid var(--pantone-orange); /* Borde naranja sutil */
-    margin-bottom: 20px; /* Espacio entre la foto y el nombre */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Sombra suave */
-}
-
-.signature-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.8rem;
-    margin: 0;
-}
-
-/* Ajuste responsivo para móviles */
-@media (max-width: 768px) {
-    .signature-photo {
-        width: 100px; /* Un poco más pequeña en móvil */
-        height: 100px;
-    }
-    
-    .signature-name {
-        font-size: 2rem;
-    }
-}
-/* --- SEPARADOR ELEGANTE --- */
-hr.elegant-separator {
-    border: 0;
-    height: 1px;
-    margin: 50px auto;
-    width: 60%; /* No ocupa todo el ancho para verse más sofisticado */
-    background-image: linear-gradient(
-        to right, 
-        rgba(255, 106, 19, 0), 
-        rgba(255, 106, 19, 0.75), 
-        rgba(255, 106, 19, 0)
-    );
-    opacity: 0.6;
-}
-
-/* Opción B: Separador con un pequeño detalle en el centro */
-hr.elegant-separator-dot {
-    border: 0;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.1);
-    margin: 60px auto;
-    position: relative;
-    overflow: visible;
-    width: 80%;
-}
-
-hr.elegant-separator-dot::after {
-    content: "●";
-    color: var(--pantone-orange);
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--pantone-black);
-    padding: 0 15px;
-    font-size: 12px;
-}
-
-/* Ajuste para móvil */
-@media (max-width: 768px) {
-    hr.elegant-separator {
-        width: 80%;
-        margin: 30px auto;
-    }
-}
-/* --- Ajustes para el separador en móviles --- */
-@media (max-width: 768px) {
-    hr.elegant-separator {
-        width: 85%;            /* Un poco más ancho en móvil para que se note el degradado */
-        margin: 30px auto;     /* Reducimos el espacio vertical */
-        opacity: 0.4;          /* Lo hacemos un poco más sutil */
-    }
-
-    hr.elegant-separator-dot {
-        width: 90%;
-        margin: 40px auto;
-    }
-
-    hr.elegant-separator-dot::after {
-        font-size: 10px;       /* Punto más pequeño */
-        top: -7px;
-        padding: 0 10px;       /* Menos espacio alrededor del punto */
-    }
-}
-
-@media (max-width : 480px) {
-    .message-body p{
-        font-size: 0.8rem;
-    }
-}
-
-
-
-    /* --- LÓGICA DEL MENÚ --- */
-
-/* 1. Ocultar botón en PC */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--white);
-    font-size: 2rem;
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
-    /* 2. Mostrar botón en teléfono */
-    .menu-toggle {
-        display: block;
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    /* 3. Ocultar menú principal en teléfono por defecto */
-    .main-nav {
-        display: none; 
-        width: 100%;
-        background-color: var(--pantone-black);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        z-index: 1000;
-    }
-
-    /* 4. Clase que activa el script.js */
-    .main-nav.active {
-        display: block !important;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        padding: 20px 0;
-        gap: 15px;
-    }
-}
-
-/*lllllllllllllllll*/
-
-
-/* Ocultar el botón en computadoras */
-/* 1. Escondemos el botón en computadoras */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
-    /* 2. Mostramos el botón solo en móviles */
-    .menu-toggle {
-        display: block;
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-
-    /* 3. El menú se oculta en móvil para que no flote siempre */
-    .main-nav {
-        display: none; 
-        width: 100%;
-        background-color: var(--pantone-black);
-        position: absolute;
-        top: 100%;
-        left: 0;
-        z-index: 999;
-    }
-
-    /* 4. ESTA ES LA PARTE QUE HACE QUE SALGA EL MENÚ */
-    .main-nav.active {
-        display: block !important; /* El !important es clave */
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        padding: 20px 0;
-        gap: 15px;
-    }
-}
-
-/* --- NAVEGACIÓN DESKTOP (Limpia) --- */
-.main-nav {
-    padding: 15px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    background: var(--pantone-black);
-    transition: all 0.4s ease;
-}
-
-.main-nav ul {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-    list-style: none;
-    margin: 0;
+/* --- PILARES (GRID) --- */
+.pillars-section {
     padding: 0;
 }
 
-/* --- ESTÉTICA MÓVIL (768px) --- */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block; /* Asegura que se vea el botón */
-        z-index: 1100;
-        color: var(--white);
-        background: none;
-        border: none;
-        font-size: 28px;
-        cursor: pointer;
-    }
-
-    .main-nav {
-        position: fixed; /* Cubre la pantalla */
-        top: 0;
-        right: -100%; /* Escondido a la derecha */
-        width: 80%; /* No ocupa todo el ancho para un look más chic */
-        height: 100vh;
-        background: rgba(13, 13, 13, 0.98);
-        backdrop-filter: blur(10px); /* Desenfoque estético */
-        display: flex !important; /* Necesario para el flexbox interno */
-        flex-direction: column;
-        justify-content: center;
-        transition: right 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
-        z-index: 1000;
-        border-left: 1px solid var(--pantone-orange);
-    }
-
-    /* Clase que activa el JS */
-    .main-nav.active {
-        right: 0; /* Se desliza suavemente */
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        gap: 30px;
-    }
-
-    .main-nav a {
-        font-size: 18px; /* Más grande en móvil para tocar con el dedo */
-        letter-spacing: 4px;
-    }
-
-    /* Overlay oscuro detrás del menú */
-    .menu-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.5);
-        display: none;
-        z-index: 999;
-    }
-    .menu-overlay.active { display: block; }
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 80px 0;
 }
 
-/* --- ESTADO INICIAL (PC) --- */
-.menu-toggle {
-    display: none; /* Escondido en computadoras */
-    background: none;
+.card {
+    background: rgba(255, 255, 255, 0.02);
+    padding: 40px;
+    border-top: 3px solid var(--pantone-orange);
+}
+
+.card-number {
+    color: var(--pantone-orange);
+    font-weight: 700;
+    display: block;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 1rem; /* Ajustado para consistencia, original decía 20px pero el contexto sugiere normal */
+    line-height: 1.6;
+}
+
+/* --- EXTRA INFO (SPLIT) --- */
+.extra-info {
+    padding: 0;
+}
+
+.split-layout {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    padding: 80px 0;
+}
+
+.text-side, .visual-side {
+    flex: 1;
+}
+
+.label {
+    color: var(--pantone-orange);
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.text-side h2 {
+    font-size: 2.5rem;
+    margin: 10px 0 20px 0;
+}
+
+.info-card-dark {
+    background: #222;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.info-card-dark h4 {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+/* --- BOTONES --- */
+.btn-saber-mas, .btn-donate {
+    background-color: var(--pantone-orange);
+    color: #000000 !important;
+    padding: 14px 35px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 25px;
     border: none;
-    color: white;
-    font-size: 30px;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
+    line-height: 1;
 }
 
-/* --- AJUSTES PARA TELÉFONO --- */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block; /* Aparece en móviles */
-        position: absolute;
-        right: 20px;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 1100;
-    }
-
-    .main-nav {
-        display: none; /* EL MENÚ SE OCULTA POR DEFECTO */
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--pantone-black);
-        z-index: 1000;
-        border-bottom: 2px solid var(--pantone-orange);
-        padding: 20px 0;
-    }
-
-    /* ESTA CLASE ES LA QUE ACTIVA EL SCRIPT.JS */
-    .main-nav.active {
-        display: block !important; /* SE MUESTRA SOLO AL DAR CLICK */
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
+.btn-saber-mas:hover, .btn-donate:hover {
+    background-color: #e65a00;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+    letter-spacing: 3px;
 }
 
+.btn-saber-mas:active, .btn-donate:active {
+    transform: translateY(-1px);
+}
+
+/* Botones Flotantes */
+.btn-floating {
+    position: fixed;
+    bottom: 30px;
+    background: var(--pantone-orange);
+    color: black;
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.btn-donate-floating {
+    left: 30px;
+}
+
+.btn-join-floating {
+    right: 30px;
+}
+
+.btn-floating:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
+    background-color: #e65a00;
+}
+
+/* --- FOOTER --- */
+.footer-simple {
+    padding: 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 12px;
+}
+
+.footer-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* --- RESPONSIVE DESIGN (Media Queries Unificados) --- */
 @media (max-width: 768px) {
+    /* Header & Nav Móvil */
+    .mid-bar {
+        padding: 10px 0;
+    }
+
+    .brand-logo {
+        max-height: 50px;
+    }
+
+    .location {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
     .menu-toggle {
         display: block;
-        position: absolute;
-        right: 20px; /* El botón se queda a la derecha para fácil acceso */
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 1100;
     }
 
     .main-nav {
-        display: block !important; /* Forzamos que sea bloque para la animación */
+        display: none; /* Oculto por defecto */
         position: fixed;
         top: 0;
-        left: -100%; /* DESAPARECE POR COMPLETO a la izquierda */
+        left: -100%;
         width: 80%;
         height: 100vh;
         background-color: var(--pantone-black);
         z-index: 1000;
-        transition: left 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0); /* Animación fluida */
+        transition: left 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
         border-right: 2px solid var(--pantone-orange);
-        box-shadow: 10px 0 15px rgba(0,0,0,0.5);
-        padding-top: 80px; /* Espacio para que los links no choquen arriba */
+        box-shadow: 10px 0 15px rgba(0, 0, 0, 0.5);
+        padding-top: 80px;
+        flex-direction: column;
+        justify-content: center;
     }
 
-    /* ESTA CLASE SE ACTIVA CON EL CLICK */
     .main-nav.active {
-        left: 0; /* APARECE DESDE LA IZQUIERDA */
+        display: flex !important; /* Flex para centrar verticalmente */
+        left: 0;
     }
 
     .main-nav ul {
@@ -732,108 +421,57 @@ hr.elegant-separator-dot::after {
         font-size: 1.2rem;
         letter-spacing: 3px;
     }
-}
-.btn-saber-mas {
-    background-color: var(--pantone-orange);
-    color: #000000 !important; /* Negro puro para máximo contraste */
-    padding: 14px 35px;
-    border-radius: 4px; /* Esquinas ligeramente suavizadas para un look moderno */
-    font-weight: 800;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-decoration: none; /* Eliminamos el subrayado para un look más limpio */
-    display: inline-block;
-    margin-top: 25px;
-    border: none;
-    text-transform: uppercase;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-}
 
-.btn-saber-mas:hover {
-    background-color: #e65a00; /* Un naranja ligeramente más oscuro */
-    transform: translateY(-3px); /* Efecto de elevación */
-    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
-    letter-spacing: 3px; /* El texto se expande sutilmente */
-}
+    /* Layouts */
+    .split-layout {
+        flex-direction: column;
+        text-align: center;
+    }
 
-.btn-saber-mas:active {
-    transform: translateY(-1px);
-}
+    .message-body p {
+        font-size: 0.95rem;
+        padding: 0 8px;
+    }
 
-/*boton de donar*/
-/* --- ESTILO UNIFICADO PARA BOTONES PREMIUM (Donar y Saber Más) --- */
-.btn-donate, .btn-saber-mas {
-    background-color: var(--pantone-orange);
-    color: #000000 !important; /* Negro puro para máximo contraste */
-    padding: 12px 30px;
-    border-radius: 4px; /* Esquinas suavizadas modernas */
-    font-weight: 800;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-decoration: none;
-    display: inline-block;
-    border: none;
-    text-transform: uppercase;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    line-height: 1; /* Mantiene el texto centrado */
-}
+    .signature-name {
+        font-size: 2.2rem;
+    }
 
-.btn-donate:hover, .btn-saber-mas:hover {
-    background-color: #e65a00; /* Naranja más profundo al pasar el mouse */
-    transform: translateY(-3px); /* Efecto de elevación */
-    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
-    letter-spacing: 3px;
-}
+    .signature-photo {
+        width: 100px;
+        height: 100px;
+    }
 
-.btn-donate:active, .btn-saber-mas:active {
-    transform: translateY(-1px);
-}
+    hr.elegant-separator {
+        width: 85%;
+        margin: 30px auto;
+    }
 
-/* Ajuste específico para el botón de donar en el menú de navegación */
-.main-nav .btn-donate {
-    padding: 10px 20px; /* Un poco más compacto para la barra de navegación */
-    margin-left: 10px;
-}
+    /* Footer */
+    .footer-flex {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
 
-/* --- BOTÓN DONAR FLOTANTE (IZQUIERDA) --- */
-.btn-donate-floating {
-    position: fixed; 
-    bottom: 30px; 
-    left: 30px;
-    background: var(--pantone-orange); 
-    color: black;
-    padding: 15px 35px; 
-    border-radius: 50px; 
-    text-decoration: none; 
-    font-weight: 700;
-    z-index: 999;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-}
-
-.btn-donate-floating:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* Ajuste para móviles - ambos botones se apilan */
-@media (max-width: 768px) {
-    .btn-donate-floating,
-    .btn-join-floating {
+    /* Botones Flotantes */
+    .btn-floating {
         bottom: 20px;
         padding: 12px 25px;
         font-size: 12px;
     }
-    
+
     .btn-donate-floating {
         left: 15px;
     }
-    
+
     .btn-join-floating {
         right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .message-body p {
+        font-size: 0.8rem;
     }
 }

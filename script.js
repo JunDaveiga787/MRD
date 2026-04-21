@@ -3,18 +3,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainNav = document.getElementById('mainNav');
 
     if (menuToggle && mainNav) {
+        // Toggle del menú
         menuToggle.addEventListener('click', (e) => {
             e.stopPropagation();
-            mainNav.classList.toggle('active');
-            // Cambia el ícono para indicar que se puede cerrar
-            menuToggle.innerHTML = mainNav.classList.contains('active') ? '✕' : '☰';
+            const isActive = mainNav.classList.toggle('active');
+            // Cambiar icono: ☰ (abrir) / ✕ (cerrar)
+            menuToggle.innerHTML = isActive ? '✕' : '☰';
         });
 
-        // Cerrar si hacen clic fuera del menú
+        // Cerrar menú al hacer clic fuera
         document.addEventListener('click', (e) => {
-            if (mainNav.classList.contains('active') && !mainNav.contains(e.target) && !menuToggle.contains(e.target)) {
-                mainNav.classList.remove('active');
-                menuToggle.innerHTML = '☰';
+            if (mainNav.classList.contains('active')) {
+                const isClickInside = mainNav.contains(e.target) || menuToggle.contains(e.target);
+                
+                if (!isClickInside) {
+                    mainNav.classList.remove('active');
+                    menuToggle.innerHTML = '☰';
+                }
             }
         });
     }
