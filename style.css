@@ -60,7 +60,7 @@ body {
 }
 
 .brand-logo {
-    max-height: 70px;
+    max-height: 85px;
     margin-bottom: 5px;
     display: block;
     margin: 0 auto 5px auto;
@@ -69,7 +69,7 @@ body {
 .location {
     display: block;
     color: var(--pantone-orange);
-    font-size: 10px;
+    font-size: 12px;
     letter-spacing: 5px;
     margin-top: -5px;
 }
@@ -119,10 +119,10 @@ body {
 
 /* --- HERO --- */
 .hero-section {
-    padding: 190px 0;
+    padding: 270px 0;
     text-align: center;
     position: relative;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/tranquilo.jpeg');
+    background: url('img/hero.jpeg');
     background-size: cover;
 }
 
