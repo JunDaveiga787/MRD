@@ -119,11 +119,17 @@ body {
 
 /* --- HERO --- */
 .hero-section {
-    padding: 270px 0;
+    padding: 0; /* Quitamos padding fijo para que la imagen controle la altura */
     text-align: center;
     position: relative;
     background: url('img/hero.jpeg');
-    background-size: cover;
+    background-size: cover; /* Cubre el área disponible */
+    background-position: center center; /* Centra la imagen */
+    background-repeat: no-repeat;
+    min-height: 60vh; /* Altura mínima: 60% de la pantalla */
+    display: flex;
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: center;
 }
 
 .section-title {
@@ -352,29 +358,36 @@ hr.elegant-separator {
 @media (max-width: 768px) {
     .menu-toggle {
         display: flex !important;
-        background: none;
-        border: 2px solid var(--white);
-        color: var(--white);
-        font-size: 24px;
+        background: var(--pantone-orange);
+        border: none;
+        color: #000000;
+        font-size: 20px;
         cursor: pointer;
         position: absolute;
-        right: 20px;
+        right: 15px;
         top: 50%;
         transform: translateY(-50%);
         z-index: 1100;
-        width: 50px;
-        height: 50px;
-        border-radius: 8px;
-        transition: all 0.3s ease;
+        width: 45px;
+        height: 45px;
+        border-radius: 50px;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         align-items: center;
         justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        font-weight: 700;
+        padding: 0;
     }
 
     .menu-toggle:hover {
-        background: var(--pantone-orange);
-        border-color: var(--pantone-orange);
-        color: var(--pantone-black);
+        background-color: #e65a00;
         transform: translateY(-50%) scale(1.05);
+        box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .menu-toggle.active {
+        background-color: #e65a00;
+        color: #000000;
     }
 
     .main-nav {
@@ -464,6 +477,22 @@ hr.elegant-separator {
     .menu-overlay.active {
         opacity: 1;
         visibility: visible;
+    }
+
+    /* --- AJUSTES ESPECÍFICOS PARA EL HERO EN MÓVIL --- */
+    .hero-section {
+        min-height: 50vh; /* 50% de la pantalla en móviles */
+        padding: 40px 0;
+        background-position: center top; /* Ajuste para ver mejor la parte superior en vertical */
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        background: rgba(26, 26, 26, 0.6); /* Fondo semitransparente para legibilidad */
+        padding: 20px;
+        border-radius: 8px;
+        max-width: 90%;
     }
 
     .mid-bar {
@@ -526,68 +555,52 @@ hr.elegant-separator {
 
 @media (max-width: 480px) {
     .menu-toggle {
-        right: 15px;
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
+        right: 10px;
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
     }
-
-    .main-nav {
-        width: 85%;
-    }
-
-    .main-nav a {
-        font-size: 1.1rem;
-        padding: 12px 25px;
-    }
-
-    .message-body p {
-        font-size: 0.8rem;
-    }
+    .main-nav { width: 85%; }
+    .main-nav a { font-size: 1.1rem; padding: 12px 25px; }
+    .message-body p { font-size: 0.8rem; }
 }
-
 
 /* --- MÓVIL (≤ 768px) --- */
 @media (max-width: 768px) {
-    /* --- BOTÓN MENÚ ESTILO "DONAR/UNIRSE" --- */
     .menu-toggle {
         display: flex !important;
-        background: var(--pantone-orange); /* Fondo naranja como los botones */
-        border: none; /* Sin borde */
-        color: #000000; /* Texto negro para contraste */
-        font-size: 20px; /* Icono un poco más pequeño */
+        background: var(--pantone-orange);
+        border: none;
+        color: #000000;
+        font-size: 20px;
         cursor: pointer;
         position: absolute;
-        right: 15px; /* Ajustado para móviles pequeños */
+        right: 15px;
         top: 50%;
         transform: translateY(-50%);
         z-index: 1100;
-        width: 45px; /* Ancho compacto */
-        height: 45px; /* Alto compacto */
-        border-radius: 50px; /* Totalmente redondeado como los botones flotantes */
+        width: 45px;
+        height: 45px;
+        border-radius: 50px;
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         align-items: center;
         justify-content: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Misma sombra que los botones */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         font-weight: 700;
         padding: 0;
     }
 
-    /* Hover del botón menú */
     .menu-toggle:hover {
-        background-color: #e65a00; /* Naranja más oscuro al pasar el mouse */
-        transform: translateY(-50%) scale(1.05); /* Efecto de elevación */
+        background-color: #e65a00;
+        transform: translateY(-50%) scale(1.05);
         box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
     }
 
-    /* Estado activo (cuando está abierto) */
     .menu-toggle.active {
         background-color: #e65a00;
         color: #000000;
     }
 
-    /* ... (El resto del CSS móvil se mantiene igual) ... */
-    
     .main-nav {
         display: none;
         position: fixed;
@@ -677,19 +690,85 @@ hr.elegant-separator {
         visibility: visible;
     }
 
-    /* Resto de ajustes de layout móvil */
-    .mid-bar { padding: 10px 0; }
-    .brand-logo { max-height: 50px; }
-    .location { font-size: 9px; letter-spacing: 3px; }
-    .split-layout { flex-direction: column; text-align: center; }
-    .message-body p { font-size: 0.95rem; padding: 0 8px; }
-    .signature-name { font-size: 2.2rem; }
-    .signature-photo { width: 100px; height: 100px; }
-    hr.elegant-separator { width: 85%; margin: 30px auto; }
-    .footer-flex { flex-direction: column; text-align: center; gap: 10px; }
-    .btn-floating { bottom: 20px; padding: 12px 25px; font-size: 12px; }
-    .btn-donate-floating { left: 15px; }
-    .btn-join-floating { right: 15px; }
+    /* --- CORRECCIÓN DEL HERO EN MÓVIL (SIN CUADRO GRIS) --- */
+    .hero-section {
+        min-height: 50vh;
+        padding: 40px 0;
+        background-position: center top;
+    }
+
+    /* Eliminamos el fondo gris y el padding del contenedor de texto */
+    .hero-content {
+        background: transparent !important; /* Fuerza transparencia total */
+        padding: 0 !important;             /* Elimina el relleno del cuadro */
+        border-radius: 0;                  /* Elimina bordes redondeados */
+        max-width: 90%;
+        z-index: 2;
+    }
+
+    /* Ajuste opcional: Si el texto blanco no se lee bien sobre la imagen clara,
+       podemos añadir una sombra al texto en lugar de un cuadro de fondo */
+    .hero-content h2, 
+    .hero-content p {
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); /* Sombra negra suave para legibilidad */
+    }
+
+    .mid-bar {
+        padding: 10px 0;
+    }
+
+    .brand-logo {
+        max-height: 50px;
+    }
+
+    .location {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .split-layout {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .message-body p {
+        font-size: 0.95rem;
+        padding: 0 8px;
+    }
+
+    .signature-name {
+        font-size: 2.2rem;
+    }
+
+    .signature-photo {
+        width: 100px;
+        height: 100px;
+    }
+
+    hr.elegant-separator {
+        width: 85%;
+        margin: 30px auto;
+    }
+
+    .footer-flex {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .btn-floating {
+        bottom: 20px;
+        padding: 12px 25px;
+        font-size: 12px;
+    }
+
+    .btn-donate-floating {
+        left: 15px;
+    }
+
+    .btn-join-floating {
+        right: 15px;
+    }
 }
 
 @media (max-width: 480px) {
