@@ -782,3 +782,85 @@ hr.elegant-separator {
     .main-nav a { font-size: 1.1rem; padding: 12px 25px; }
     .message-body p { font-size: 0.8rem; }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    /* --- HERO: MÁS PEQUEÑO Y SIN ESPACIO ARRIBA --- */
+    .hero-section {
+        display: block !important; 
+        width: 100%;
+        margin: 0;
+        padding: 0; /* Sin relleno interno */
+        
+        background-image: url('img/BANNERrr.png') !important;
+        background-size: cover; 
+        background-position: center center; 
+        background-repeat: no-repeat;
+        
+        /* CAMBIO: Reducimos a 35vh para que se vea más contenido abajo */
+        min-height: 35vh; 
+        height: auto;
+        
+        position: relative;
+        /* Aseguramos que no haya margen externo */
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+
+    .hero-content {
+        background: transparent !important;
+        padding: 0 !important; /* Sin relleno */
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+        z-index: 2;
+        position: relative;
+        text-align: center;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+        
+        /* Eliminamos cualquier empuje hacia abajo */
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        
+        /* Centrado vertical ligero si la imagen es muy alta, pero con 35vh suele estar bien */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; 
+        height: 100%; /* Ocupa toda la altura del hero-section */
+    }
+
+    .hero-content h2 {
+        font-size: 1.6rem; /* Título un poco más compacto */
+        margin-bottom: 8px;
+        line-height: 1.2;
+    }
+
+    .hero-content p {
+        font-size: 0.95rem;
+        line-height: 1.4;
+        margin-bottom: 10px;
+    }
+    
+    /* El resto de estilos móviles se mantienen igual... */
+}
