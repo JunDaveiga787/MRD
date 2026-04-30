@@ -126,7 +126,7 @@ body {
     background-size: cover; /* Cubre el área disponible */
     background-position: center center; /* Centra la imagen */
     background-repeat: no-repeat;
-    min-height: 58vh; /* Altura mínima: 60% de la pantalla */
+    min-height: 57vh; /* Altura mínima: 60% de la pantalla */
     display: flex;
     align-items: center; /* Centra el contenido verticalmente */
     justify-content: center;
