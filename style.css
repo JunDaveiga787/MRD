@@ -122,7 +122,7 @@ body {
     padding: 0; /* Quitamos padding fijo para que la imagen controle la altura */
     text-align: center;
     position: relative;
-    background: url('');
+    background: url('img/BANNERrr.png');
     background-size: cover; /* Cubre el área disponible */
     background-position: center center; /* Centra la imagen */
     background-repeat: no-repeat;
