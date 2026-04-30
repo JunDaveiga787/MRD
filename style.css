@@ -122,11 +122,11 @@ body {
     padding: 0; /* Quitamos padding fijo para que la imagen controle la altura */
     text-align: center;
     position: relative;
-    background: url('img/hero.jpeg');
+    background: url('img/BANNERrr.png');
     background-size: cover; /* Cubre el área disponible */
     background-position: center center; /* Centra la imagen */
     background-repeat: no-repeat;
-    min-height: 60vh; /* Altura mínima: 60% de la pantalla */
+    min-height: 57vh; /* Altura mínima: 60% de la pantalla */
     display: flex;
     align-items: center; /* Centra el contenido verticalmente */
     justify-content: center;
